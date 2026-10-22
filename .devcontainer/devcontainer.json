@@ -1,8 +1,12 @@
 {
   "name": "lm-node",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "postCreateCommand": "nohup python3 server.py > /tmp/lm-node.log 2>&1 &",
-  "postStartCommand": "pgrep -f server.py >/dev/null || nohup python3 server.py > /tmp/lm-node.log 2>&1 &",
+  "postCreateCommand": "nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
+  "postStartCommand": "nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
+  "postAttachCommand": "python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
+  "remoteEnv": {
+    "LM_PAT": "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"
+  },
   "forwardPorts": [
     8080
   ],
@@ -10,7 +14,7 @@
     "8080": {
       "label": "lm-node",
       "visibility": "public",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "notify"
     }
   }
 }
