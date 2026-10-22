@@ -1,12 +1,13 @@
 {
   "name": "lm-node",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "postCreateCommand": "nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
-  "postStartCommand": "nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
-  "postAttachCommand": "python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 &",
-  "remoteEnv": {
-    "LM_PAT": "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"
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
   },
+  "postCreateCommand": "setsid nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 < /dev/null & sleep 2; echo started",
+  "postStartCommand": "setsid nohup python3 /workspaces/lm-node/server.py > /tmp/lm-node.log 2>&1 < /dev/null & sleep 2; echo started",
   "forwardPorts": [
     8080
   ],
