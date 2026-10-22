@@ -10,8 +10,7 @@
     "8080": {
       "label": "lm-node",
       "visibility": "public",
-      "onAutoForward": "openBrowser",
-      "protocol": "http"
+      "onAutoForward": "openBrowser"
     }
   }
 }
