@@ -9,7 +9,9 @@
   "portsAttributes": {
     "8080": {
       "label": "lm-node",
-      "onAutoForward": "notify"
+      "visibility": "public",
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
     }
   }
 }
