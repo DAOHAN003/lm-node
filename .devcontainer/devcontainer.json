@@ -1,0 +1,15 @@
+{
+  "name": "lm-node",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "nohup python3 server.py > /tmp/lm-node.log 2>&1 &",
+  "postStartCommand": "pgrep -f server.py >/dev/null || nohup python3 server.py > /tmp/lm-node.log 2>&1 &",
+  "forwardPorts": [
+    8080
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "lm-node",
+      "onAutoForward": "notify"
+    }
+  }
+}
