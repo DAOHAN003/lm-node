@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: lm-node
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: "echo 'no build needed'"
+    startCommand: "python server.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
